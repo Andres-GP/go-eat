@@ -1,16 +1,21 @@
-import React, { useContext } from 'react';
-
+import React, { useState, useEffect } from 'react'
+import { getCategories } from '../services'
 import Link from 'next/link';
 
-const categories = [{name: 'zoinombre', slug: 'zoyzlug'}, {name: 'zoinombaaare', slug: 'zoyaaaazlug'}]
-
 const Header = () => {
+  const [categories, setcategories] = useState([]);
+
+  useEffect(() => {
+      getCategories()
+          .then((newCategories) => setcategories(newCategories))
+  }, []);
+
     return (
         <div className="container mx-auto px-10 mb-8">
       <div className="border-b w-full inline-block border-blue-400 py-8">
         <div className="md:float-left block">
           <Link href="/">
-            <span className="cursor-pointer font-bold text-4xl text-white">Graph CMS</span>
+            <span className="cursor-pointer font-bold text-4xl text-white">Go Eat It!</span>
           </Link>
         </div>
         <div className="hidden md:float-left md:contents">
