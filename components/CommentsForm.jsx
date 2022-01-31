@@ -49,8 +49,8 @@ const CommentsForm = ({ slug }) => {
     }
 
     return (
-        <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
-            <h3 className="text-xl mb-8 font-semibold border-b pb-4">Leave a Reply</h3>
+        <div className="bg-neutral-800 shadow-lg rounded-lg p-8 pb-12 mb-8">
+            <h3 className="text-xl mb-8 font-semibold border-b pb-4 bg-neutral-800 text-neutral-100 border-neutral-700">Leave a Reply</h3>
             <div className="grid grid-cols-1 gap-4 mb-4">
                 <textarea 
                     ref={commentEl} 
@@ -86,7 +86,7 @@ const CommentsForm = ({ slug }) => {
                 <button    
                     type="button" onClick={handleCommentSubmission}
                     onClick={handleCommentSubmission}
-                    className="transition duration-400 ease hover:bg-indigo-400 inline-block bg-pink-600 text-lg rounded-full text-white px-8 py-3 cursor-pointer"
+                    className="transition duration-200 transform hover:-translate-y-1 transition  bg-orange-600  ease hover:bg-amber-400 inline-block bg-pink-600 text-lg rounded-full text-white px-8 py-3 cursor-pointer"
                     >
                     Post Comment
                 </button>
