@@ -12,7 +12,7 @@ const Categories = () => {
     }, []);
     return (
         <div className="bg-neutral-800 shadow-lg rounded-lg p-8 mb-8">
-            <h3 className="text-neutral-300 mb-8 font-semibold border-b pb-4 border-neutral-700 ">
+            <h3 className="text-neutral-100 mb-8 font-semibold border-b pb-4 border-neutral-700 ">
                 Categories
             </h3>
             {categories.map((category) => (
