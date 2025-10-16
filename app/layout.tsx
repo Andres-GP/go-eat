@@ -11,7 +11,6 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Go Eat - Culinary Adventures",
   description: "Discover amazing recipes and cooking inspiration",
-  generator: "v0.app",
 };
 
 export default function RootLayout({
