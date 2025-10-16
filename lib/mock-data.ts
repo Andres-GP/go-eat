@@ -1,16 +1,16 @@
 export interface Post {
-  id: string
-  title: string
-  slug: string
-  excerpt: string
-  content: string
-  image: string
-  category: string
-  author: string
-  date: string
-  cookTime: string
-  servings: number
-  difficulty: string
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  image: string;
+  category: string;
+  author: string;
+  date: string;
+  cookTime: string;
+  servings: number;
+  difficulty: string;
 }
 
 export const categories = [
@@ -20,14 +20,15 @@ export const categories = [
   { id: "dinner", name: "Dinner", icon: "🍝" },
   { id: "dessert", name: "Dessert", icon: "🍰" },
   { id: "appetizer", name: "Appetizer", icon: "🥟" },
-]
+];
 
 export const posts: Post[] = [
   {
     id: "1",
     title: "Classic Margherita Pizza",
     slug: "classic-margherita-pizza",
-    excerpt: "Learn how to make authentic Italian pizza with fresh mozzarella, basil, and tomato sauce.",
+    excerpt:
+      "Learn how to make authentic Italian pizza with fresh mozzarella, basil, and tomato sauce.",
     content: `
 # Classic Margherita Pizza
 
@@ -65,7 +66,8 @@ Enjoy your homemade pizza!
     id: "2",
     title: "Fluffy Pancakes",
     slug: "fluffy-pancakes",
-    excerpt: "Start your morning right with these incredibly fluffy and delicious pancakes.",
+    excerpt:
+      "Start your morning right with these incredibly fluffy and delicious pancakes.",
     content: `
 # Fluffy Pancakes
 
@@ -103,7 +105,8 @@ These pancakes are light, airy, and absolutely delicious. Perfect for a weekend 
     id: "3",
     title: "Caesar Salad",
     slug: "caesar-salad",
-    excerpt: "A crisp and refreshing Caesar salad with homemade dressing and crunchy croutons.",
+    excerpt:
+      "A crisp and refreshing Caesar salad with homemade dressing and crunchy croutons.",
     content: `
 # Caesar Salad
 
@@ -247,4 +250,4 @@ This healthy and delicious salmon is glazed with honey and garlic for the perfec
     servings: 4,
     difficulty: "Easy",
   },
-]
+];
