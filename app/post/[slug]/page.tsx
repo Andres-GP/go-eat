@@ -1,22 +1,43 @@
-import { Container, Typography, Box, Chip, Paper, Divider, Grid } from "@mui/material"
-import { AccessTime, Restaurant, Person, TrendingUp } from "@mui/icons-material"
-import { Navbar } from "@/components/navbar"
-import { CommentSection } from "@/components/comment-section"
-import { posts } from "@/lib/mock-data"
-import { notFound } from "next/navigation"
+"use client";
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
-  const post = posts.find((p) => p.slug === slug)
+import {
+  Container,
+  Typography,
+  Box,
+  Chip,
+  Paper,
+  Divider,
+  Grid,
+} from "@mui/material";
+import {
+  AccessTime,
+  Restaurant,
+  Person,
+  TrendingUp,
+} from "@mui/icons-material";
+import { Navbar } from "@/components/navbar";
+import { CommentSection } from "@/components/comment-section";
+import { posts } from "@/lib/mock-data";
+import { notFound } from "next/navigation";
+
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = posts.find((p) => p.slug === slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
-  const sections = post.content.split("\n## ").filter((s) => s.trim())
-  const title = sections[0].replace(/^#\s+/, "").trim()
-  const ingredientsSection = sections.find((s) => s.startsWith("Ingredients"))
-  const instructionsSection = sections.find((s) => s.startsWith("Instructions"))
+  const sections = post.content.split("\n## ").filter((s) => s.trim());
+  const title = sections[0].replace(/^#\s+/, "").trim();
+  const ingredientsSection = sections.find((s) => s.startsWith("Ingredients"));
+  const instructionsSection = sections.find((s) =>
+    s.startsWith("Instructions")
+  );
 
   return (
     <>
@@ -104,10 +125,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               }}
             >
               <Person sx={{ color: "#ffa500", fontSize: 32, mb: 1 }} />
-              <Typography variant="caption" sx={{ color: "#b0b0b0", display: "block", mb: 0.5 }}>
+              <Typography
+                variant="caption"
+                sx={{ color: "#b0b0b0", display: "block", mb: 0.5 }}
+              >
                 Chef
               </Typography>
-              <Typography variant="body2" sx={{ color: "#f5f5f5", fontWeight: 600 }}>
+              <Typography
+                variant="body2"
+                sx={{ color: "#f5f5f5", fontWeight: 600 }}
+              >
                 {post.author}
               </Typography>
             </Paper>
@@ -127,10 +154,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               }}
             >
               <AccessTime sx={{ color: "#ffa500", fontSize: 32, mb: 1 }} />
-              <Typography variant="caption" sx={{ color: "#b0b0b0", display: "block", mb: 0.5 }}>
+              <Typography
+                variant="caption"
+                sx={{ color: "#b0b0b0", display: "block", mb: 0.5 }}
+              >
                 Cook Time
               </Typography>
-              <Typography variant="body2" sx={{ color: "#f5f5f5", fontWeight: 600 }}>
+              <Typography
+                variant="body2"
+                sx={{ color: "#f5f5f5", fontWeight: 600 }}
+              >
                 {post.cookTime}
               </Typography>
             </Paper>
@@ -150,10 +183,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               }}
             >
               <Restaurant sx={{ color: "#ffa500", fontSize: 32, mb: 1 }} />
-              <Typography variant="caption" sx={{ color: "#b0b0b0", display: "block", mb: 0.5 }}>
+              <Typography
+                variant="caption"
+                sx={{ color: "#b0b0b0", display: "block", mb: 0.5 }}
+              >
                 Servings
               </Typography>
-              <Typography variant="body2" sx={{ color: "#f5f5f5", fontWeight: 600 }}>
+              <Typography
+                variant="body2"
+                sx={{ color: "#f5f5f5", fontWeight: 600 }}
+              >
                 {post.servings}
               </Typography>
             </Paper>
@@ -173,10 +212,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               }}
             >
               <TrendingUp sx={{ color: "#ffa500", fontSize: 32, mb: 1 }} />
-              <Typography variant="caption" sx={{ color: "#b0b0b0", display: "block", mb: 0.5 }}>
+              <Typography
+                variant="caption"
+                sx={{ color: "#b0b0b0", display: "block", mb: 0.5 }}
+              >
                 Difficulty
               </Typography>
-              <Typography variant="body2" sx={{ color: "#f5f5f5", fontWeight: 600 }}>
+              <Typography
+                variant="body2"
+                sx={{ color: "#f5f5f5", fontWeight: 600 }}
+              >
                 {post.difficulty}
               </Typography>
             </Paper>
@@ -295,5 +340,5 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <CommentSection postId={post.id} />
       </Container>
     </>
-  )
+  );
 }
