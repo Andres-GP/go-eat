@@ -10,18 +10,23 @@ import {
 } from "@mui/material";
 import { AccessTime, Restaurant } from "@mui/icons-material";
 import Link from "next/link";
-import type { Post } from "@/lib/mock-data";
-
-interface PostCardProps {
-  post: Post;
-}
+import { PostCardProps } from "@/types";
 
 export function PostCard({ post }: PostCardProps) {
+  const categoryName = post.categories?.[0]?.name || "General";
+  const image = post.featuredImage?.url || "/fallback.jpg";
+  const date = post.createdAt
+    ? new Date(post.createdAt).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      })
+    : "";
+
   return (
     <Link href={`/post/${post.slug}`} style={{ textDecoration: "none" }}>
       <Card
         sx={{
-          height: "100%",
+          height: "500px",
           display: "flex",
           flexDirection: "column",
           backgroundColor: "#1a1a1a",
@@ -30,23 +35,24 @@ export function PostCard({ post }: PostCardProps) {
           overflow: "hidden",
           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
           "&:hover": {
-            transform: "translateY(-12px)",
+            transform: "translateY(-10px)",
             boxShadow: "0 20px 40px rgba(255, 107, 53, 0.25)",
             borderColor: "#ff6b35",
-            "& .card-image": {
-              transform: "scale(1.1)",
-            },
+          },
+          marginBottom: {
+            xs: "30px",
+            sm: 0,
           },
         }}
       >
         <Box sx={{ overflow: "hidden", position: "relative" }}>
           <CardMedia
             component="img"
-            height="260"
-            image={post.image}
+            image={image}
             alt={post.title}
             className="card-image"
             sx={{
+              height: "260px",
               objectFit: "cover",
               transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
@@ -54,15 +60,16 @@ export function PostCard({ post }: PostCardProps) {
           <Box
             sx={{
               position: "absolute",
-              bottom: 0,
+              top: 0,
+              bottom: 0.00001,
               left: 0,
               right: 0,
-              height: "50%",
               background:
                 "linear-gradient(to top, rgba(0,0,0,0.7), transparent)",
             }}
           />
         </Box>
+
         <CardContent
           sx={{
             flexGrow: 1,
@@ -80,7 +87,7 @@ export function PostCard({ post }: PostCardProps) {
             }}
           >
             <Chip
-              label={post.category}
+              label={categoryName}
               size="small"
               sx={{
                 backgroundColor: "#ff6b35",
@@ -95,13 +102,9 @@ export function PostCard({ post }: PostCardProps) {
               variant="caption"
               sx={{ color: "#b0b0b0", fontWeight: 500 }}
             >
-              {new Date(post.date).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-              })}
+              {date}
             </Typography>
           </Box>
-
           <Typography
             variant="h5"
             component="h3"
@@ -114,18 +117,18 @@ export function PostCard({ post }: PostCardProps) {
           >
             {post.title}
           </Typography>
-
-          <Typography
-            variant="body2"
-            sx={{
-              color: "#b0b0b0",
-              flexGrow: 1,
-              lineHeight: 1.7,
-            }}
-          >
-            {post.excerpt}
-          </Typography>
-
+          {post.excerpt && (
+            <Typography
+              variant="body2"
+              sx={{
+                color: "#b0b0b0",
+                flexGrow: 1,
+                lineHeight: 1.7,
+              }}
+            >
+              {post.excerpt}
+            </Typography>
+          )}
           <Box
             sx={{
               display: "flex",

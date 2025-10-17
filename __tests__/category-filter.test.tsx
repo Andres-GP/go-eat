@@ -4,6 +4,15 @@ import { CategoryFilter } from "@/components/category-filter";
 describe("CategoryFilter", () => {
   const mockOnCategoryChange = jest.fn();
 
+  const categories = [
+    { slug: "all", name: "All Recipes" },
+    { slug: "breakfast", name: "Breakfast" },
+    { slug: "lunch", name: "Lunch" },
+    { slug: "dinner", name: "Dinner" },
+    { slug: "dessert", name: "Dessert" },
+    { slug: "appetizer", name: "Appetizer" },
+  ];
+
   beforeEach(() => {
     mockOnCategoryChange.mockClear();
   });
@@ -13,15 +22,13 @@ describe("CategoryFilter", () => {
       <CategoryFilter
         selectedCategory="all"
         onCategoryChange={mockOnCategoryChange}
+        categories={categories}
       />
     );
 
-    expect(screen.getByText(/All Recipes/i)).toBeInTheDocument();
-    expect(screen.getByText(/Breakfast/i)).toBeInTheDocument();
-    expect(screen.getByText(/Lunch/i)).toBeInTheDocument();
-    expect(screen.getByText(/Dinner/i)).toBeInTheDocument();
-    expect(screen.getByText(/Dessert/i)).toBeInTheDocument();
-    expect(screen.getByText(/Appetizer/i)).toBeInTheDocument();
+    categories.forEach((category) => {
+      expect(screen.getByText(category.name)).toBeInTheDocument();
+    });
   });
 
   it("calls onCategoryChange when a chip is clicked", () => {
@@ -29,10 +36,11 @@ describe("CategoryFilter", () => {
       <CategoryFilter
         selectedCategory="all"
         onCategoryChange={mockOnCategoryChange}
+        categories={categories}
       />
     );
 
-    const breakfastChip = screen.getByText(/Breakfast/i);
+    const breakfastChip = screen.getByText("Breakfast");
     fireEvent.click(breakfastChip);
 
     expect(mockOnCategoryChange).toHaveBeenCalledWith("breakfast");
@@ -43,21 +51,23 @@ describe("CategoryFilter", () => {
       <CategoryFilter
         selectedCategory="dinner"
         onCategoryChange={mockOnCategoryChange}
+        categories={categories}
       />
     );
 
-    const dinnerChip = screen.getByText(/Dinner/i).closest(".MuiChip-root");
+    const dinnerChip = screen.getByText("Dinner").closest(".MuiChip-root");
     expect(dinnerChip).toHaveStyle({ backgroundColor: "#ff6b35" });
 
     rerender(
       <CategoryFilter
         selectedCategory="breakfast"
         onCategoryChange={mockOnCategoryChange}
+        categories={categories}
       />
     );
 
     const breakfastChip = screen
-      .getByText(/Breakfast/i)
+      .getByText("Breakfast")
       .closest(".MuiChip-root");
     expect(breakfastChip).toHaveStyle({ backgroundColor: "#ff6b35" });
   });
