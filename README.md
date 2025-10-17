@@ -7,7 +7,7 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, **MUI**, and **GraphQL
 
 ## 🚀 Live Demo
 
-👉 [View Live App on Vercel](https://go-eat-it-dw9v2yr0g-andres-gp.vercel.app/)
+👉 [View Live App on Vercel](https://go-eat-it.vercel.app/)
 
 ---
 
