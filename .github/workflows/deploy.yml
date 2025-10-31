@@ -7,12 +7,12 @@ on:
       - completed
 
 jobs:
-  deploy-staging:
+  deploy-prod:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     environment:
-      name: staging
-      url: https://go-eat-staging.vercel.app
+      name: production
+      url: go-eat-it.vercel.app
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node
@@ -26,29 +26,6 @@ jobs:
         env:
           GRAPHCMS_TOKEN: ${{ secrets.GRAPHCMS_TOKEN }}
           NEXT_PUBLIC_GRAPHCMS_ENDPOINT: ${{ secrets.NEXT_PUBLIC_GRAPHCMS_ENDPOINT }}
-      - name: Deploy to Vercel (Staging)
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
-
-  deploy-production:
-    needs: deploy-staging
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    environment:
-      name: production
-      url: https://go-eat.vercel.app
-    steps:
-      - uses: actions/checkout@v4
-      - name: Wait for manual approval
-        uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ secrets.GITHUB_TOKEN }}
-          approvers: Andres-GP
-          minimum-approvals: 1
       - name: Deploy to Vercel (Prod)
         uses: amondnet/vercel-action@v25
         with:
