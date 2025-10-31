@@ -7,6 +7,11 @@ on:
         required: false
         type: string
         default: "22"
+    secrets:
+      GRAPHCMS_TOKEN:
+        required: true
+      NEXT_PUBLIC_GRAPHCMS_ENDPOINT:
+        required: true
 
 jobs:
   build:
@@ -21,18 +26,13 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        env:
-          GRAPHCMS_TOKEN: ${{ secrets.GRAPHCMS_TOKEN }}
-          NEXT_PUBLIC_GRAPHCMS_ENDPOINT: ${{ secrets.NEXT_PUBLIC_GRAPHCMS_ENDPOINT }}
 
       - name: Run ESLint
         run: npm run lint
-        env:
-          GRAPHCMS_TOKEN: ${{ secrets.GRAPHCMS_TOKEN }}
-          NEXT_PUBLIC_GRAPHCMS_ENDPOINT: ${{ secrets.NEXT_PUBLIC_GRAPHCMS_ENDPOINT }}
 
       - name: Build project
         run: npm run build
         env:
           GRAPHCMS_TOKEN: ${{ secrets.GRAPHCMS_TOKEN }}
           NEXT_PUBLIC_GRAPHCMS_ENDPOINT: ${{ secrets.NEXT_PUBLIC_GRAPHCMS_ENDPOINT }}
+
