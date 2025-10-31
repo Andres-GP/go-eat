@@ -11,6 +11,9 @@ jobs:
     uses: ./.github/workflows/reusable-build.yml
     with:
       node-version: 22
+    secrets:
+      GRAPHCMS_TOKEN: ${{ secrets.GRAPHCMS_TOKEN }}
+      NEXT_PUBLIC_GRAPHCMS_ENDPOINT: ${{ secrets.NEXT_PUBLIC_GRAPHCMS_ENDPOINT }}
 
   unit-tests:
     runs-on: ubuntu-latest
