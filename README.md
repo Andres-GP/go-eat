@@ -8,7 +8,7 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, **MUI**, and **GraphQL
 ## 🚀 Live Demo
 
 👉 [View Live App on Vercel](https://go-eat-it.vercel.app/)
-
+👉 [CI/CD Discord channel here!](https://discord.com/channels/1433886988158763124/1433886988980719819)
 ---
 
 ## ✨ Features
@@ -56,7 +56,6 @@ This project includes a full GitHub Actions workflow for continuous integration,
   - Automatic deployment to **Vercel** after CI succeeds.
   - Manual approval required for production deployment.
   - Discord notifications for successful production deployments. 
-    [Discord channel here!]([https://go-eat-it.vercel.app/](https://discord.com/channels/1433886988158763124/1433886988980719819))
 
 - **Performance & Quality Checks**
   - Weekly **Lighthouse audits** scheduled with GitHub Actions.
