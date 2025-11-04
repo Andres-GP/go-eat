@@ -55,7 +55,7 @@ This project includes a full GitHub Actions workflow for continuous integration,
 - **Continuous Deployment (CD)**
   - Automatic deployment to **Vercel** after CI succeeds.
   - Manual approval required for production deployment.
-  - Discord notifications for successful production deployments [Here]([https://go-eat-it.vercel.app/](https://discord.com/channels/1433886988158763124/1433886988980719819)).
+  - Discord notifications for successful production deployments [here]([https://go-eat-it.vercel.app/](https://discord.com/channels/1433886988158763124/1433886988980719819)).
 
 - **Performance & Quality Checks**
   - Weekly **Lighthouse audits** scheduled with GitHub Actions.
